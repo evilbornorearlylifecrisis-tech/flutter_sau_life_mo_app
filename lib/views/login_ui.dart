@@ -1,7 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'signup_ui.dart';
 
 class LoginUi extends StatefulWidget {
@@ -12,12 +11,46 @@ class LoginUi extends StatefulWidget {
 }
 
 class _LoginUiState extends State<LoginUi> {
+  InputDecoration _inputDecoration({
+    required String hintText,
+    required Widget prefixIcon,
+    Widget? suffixIcon,
+  }) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(
+        color: Colors.grey,
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(vertical: 20),
+      prefixIcon: prefixIcon,
+      prefixIconConstraints: const BoxConstraints(minWidth: 56, minHeight: 56),
+      suffixIcon: suffixIcon,
+      suffixIconConstraints: const BoxConstraints(minWidth: 56, minHeight: 56),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black54),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 35,
             bottom: 45,
             left: 30,
@@ -44,9 +77,9 @@ class _LoginUiState extends State<LoginUi> {
                   alignment: Alignment.centerLeft,
                   child: Image.asset(
                     'assets/images/logo.png',
-                    width: 180,
+                    width: 210,
                     height: 180,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 //ส่วนข้อความ Welcome..., Make it....
@@ -55,8 +88,8 @@ class _LoginUiState extends State<LoginUi> {
                   child: Text(
                     'Welcome Back,',
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ),
@@ -65,51 +98,30 @@ class _LoginUiState extends State<LoginUi> {
                   child: Text(
                     'Make it work, make it right, make it fast.',
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
                 //ส่วนป้อนอีเมล์
-                SizedBox(height: 20),
+                const SizedBox(height: 24),
                 TextField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'E-mail',
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    contentPadding: EdgeInsets.all(22),
+                    prefixIcon: const Icon(Icons.person_outline, color: Colors.grey, size: 22),
                   ),
                 ),
                 //ส่วนป้อนรหัสผ่าน
-                SizedBox(height: 20),
+                const SizedBox(height: 16),
                 TextField(
                   obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      FontAwesomeIcons.fingerprint,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'Password',
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    contentPadding: EdgeInsets.all(22),
-                    suffixIcon: Icon(
-                      Icons.visibility_off,
-                      color: Colors.grey,
-                    ),
+                    prefixIcon: const Icon(Icons.fingerprint, color: Colors.grey, size: 22),
+                    suffixIcon: const Icon(Icons.visibility_off, color: Colors.grey, size: 22),
                   ),
                 ),
                 //ส่วนปุ่ม Forget...
@@ -131,10 +143,11 @@ class _LoginUiState extends State<LoginUi> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'LOGIN',
                     style: TextStyle(
                       color: Colors.white,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -146,6 +159,8 @@ class _LoginUiState extends State<LoginUi> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     backgroundColor: Colors.black,
+                    elevation: 6,
+                    shadowColor: Colors.black26,
                   ),
                 ),
                 //ส่วนข้อควา OR
@@ -157,6 +172,16 @@ class _LoginUiState extends State<LoginUi> {
                 SizedBox(height: 20),
                 OutlinedButton(
                   onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    fixedSize: Size(
+                      MediaQuery.of(context).size.width,
+                      50,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    side: BorderSide(color: Colors.black26),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -171,18 +196,10 @@ class _LoginUiState extends State<LoginUi> {
                         'Sign-in with Google',
                         style: TextStyle(
                           color: Colors.black,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width,
-                      50,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
                   ),
                 ),
                 //ส่วนข้อความ Don't ... กับปุ่ม Sign Up

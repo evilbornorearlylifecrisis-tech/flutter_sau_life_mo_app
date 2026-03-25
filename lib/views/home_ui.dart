@@ -13,112 +13,106 @@ class _HomeUiState extends State<HomeUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          // Background Illustration or Gradient
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.amber.shade200, Colors.white],
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Logo
-                  Image.asset(
+      backgroundColor: const Color(0xFFFDE74C),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+          child: Column(
+            children: [
+              const Spacer(),
+              Expanded(
+                flex: 5,
+                child: Center(
+                  child: Image.asset(
                     'assets/images/logo.png',
-                    width: 250,
+                    fit: BoxFit.contain,
                   ),
-                  SizedBox(height: 20),
-                  // Welcome Text
-                  Text(
-                    'SAU LIFE',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  Text(
-                    'Experience the best life at SAU',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade700,
-                    ),
-                  ),
-                  SizedBox(height: 50),
-                  // Buttons Container
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: [
-                        // Login Button
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoginUi()),
-                            );
-                          },
-                          child: Text(
-                            'LOGIN',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            minimumSize: Size(double.infinity, 55),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            elevation: 5,
-                          ),
+                ),
+              ),
+              const Spacer(),
+              Text(
+                'Build IoT-SAU Apps',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'มหาวิทยาลัยเอเชียอาคเนย์',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Created by NAMO SAU ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 34),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginUi()),
+                        );
+                      },
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        side: const BorderSide(color: Colors.black26, width: 1.2),
+                        minimumSize: const Size(double.infinity, 58),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        SizedBox(height: 20),
-                        // Sign Up Button
-                        OutlinedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => SignupUi()),
-                            );
-                          },
-                          child: Text(
-                            'SIGN UP',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.black, width: 2),
-                            minimumSize: Size(double.infinity, 55),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800),
+                      ),
                     ),
                   ),
-                  SizedBox(height: 40),
-                  // Footer
-                  Text(
-                    'Design Your Future With Us',
-                    style: TextStyle(
-                      color: Colors.amber.shade800,
-                      fontWeight: FontWeight.w500,
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupUi()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        minimumSize: const Size(double.infinity, 58),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        'SIGNUP',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
+              const SizedBox(height: 28),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

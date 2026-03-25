@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignupUi extends StatefulWidget {
   const SignupUi({super.key});
@@ -9,12 +8,40 @@ class SignupUi extends StatefulWidget {
 }
 
 class _SignupUiState extends State<SignupUi> {
+  InputDecoration _inputDecoration({required String hintText, required Widget prefixIcon}) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(
+        color: Colors.grey,
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(vertical: 20),
+      prefixIcon: prefixIcon,
+      prefixIconConstraints: const BoxConstraints(minWidth: 56, minHeight: 56),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: Colors.black54),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 35,
             bottom: 45,
             left: 30,
@@ -41,9 +68,9 @@ class _SignupUiState extends State<SignupUi> {
                   alignment: Alignment.centerLeft,
                   child: Image.asset(
                     'assets/images/logo.png',
-                    width: 150,
+                    width: 190,
                     height: 150,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 // Welcome Text
@@ -53,7 +80,7 @@ class _SignupUiState extends State<SignupUi> {
                     'Get On Board!',
                     style: TextStyle(
                       fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ),
@@ -62,90 +89,64 @@ class _SignupUiState extends State<SignupUi> {
                   child: Text(
                     'Create your profile to start your journey.',
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 24),
                 // Full Name
                 TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.person_outline,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'Full Name',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    contentPadding: EdgeInsets.all(22),
+                    prefixIcon: const Icon(Icons.person_outline, color: Colors.grey, size: 22),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 16),
                 // Email
                 TextField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.email_outlined,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'E-mail',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    contentPadding: EdgeInsets.all(22),
+                    prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey, size: 22),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 16),
                 // Phone No
                 TextField(
                   keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.phone_android_outlined,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'Phone No',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    contentPadding: EdgeInsets.all(22),
+                    prefixIcon: const Icon(Icons.tag, color: Colors.grey, size: 22),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 16),
                 // Password
                 TextField(
                   obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(
-                      FontAwesomeIcons.fingerprint,
-                      color: Colors.amber,
-                    ),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: _inputDecoration(
                     hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    contentPadding: EdgeInsets.all(22),
+                    prefixIcon: const Icon(Icons.fingerprint, color: Colors.grey, size: 22),
                   ),
                 ),
                 SizedBox(height: 25),
                 // Signup Button
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text(
-                    'SIGN UP',
-                    style: TextStyle(color: Colors.white),
-                  ),
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(MediaQuery.of(context).size.width, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     backgroundColor: Colors.black,
+                    elevation: 6,
+                    shadowColor: Colors.black26,
+                  ),
+                  child: const Text(
+                    'SIGN UP',
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -154,6 +155,11 @@ class _SignupUiState extends State<SignupUi> {
                 // Google Button
                 OutlinedButton(
                   onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    fixedSize: Size(MediaQuery.of(context).size.width, 50),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    side: BorderSide(color: Colors.black26),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -164,13 +170,9 @@ class _SignupUiState extends State<SignupUi> {
                       SizedBox(width: 20),
                       Text(
                         'Sign-in with Google',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
                       ),
                     ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    fixedSize: Size(MediaQuery.of(context).size.width, 50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                 ),
                 SizedBox(height: 30),
@@ -184,7 +186,7 @@ class _SignupUiState extends State<SignupUi> {
                         Navigator.pop(context);
                       },
                       child: Text(
-                        'Login',
+                        'LOGIN',
                         style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
                       ),
                     ),
