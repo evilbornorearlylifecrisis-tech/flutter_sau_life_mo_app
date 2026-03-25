@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignupUi extends StatefulWidget {
   const SignupUi({super.key});
@@ -8,6 +9,7 @@ class SignupUi extends StatefulWidget {
 }
 
 class _SignupUiState extends State<SignupUi> {
+  final _formKey = GlobalKey<FormState>();
   InputDecoration _inputDecoration({required String hintText, required Widget prefixIcon}) {
     return InputDecoration(
       hintText: hintText,
@@ -48,7 +50,9 @@ class _SignupUiState extends State<SignupUi> {
             right: 30,
           ),
           child: Center(
-            child: Column(
+            child: Form(
+              key: _formKey,
+              child: Column(
               children: [
                 // Back Button
                 Align(
@@ -105,23 +109,46 @@ class _SignupUiState extends State<SignupUi> {
                 ),
                 const SizedBox(height: 16),
                 // Email
-                TextField(
+                TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   decoration: _inputDecoration(
                     hintText: 'E-mail',
                     prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey, size: 22),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'กรุณากรอกอีเมล';
+                    }
+                    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                    if (!emailRegex.hasMatch(value)) {
+                      return 'กรุณากรอกอีเมลให้ถูกต้อง เช่น example@mail.com';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 // Phone No
-                TextField(
-                  keyboardType: TextInputType.phone,
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(10),
+                  ],
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   decoration: _inputDecoration(
                     hintText: 'Phone No',
                     prefixIcon: const Icon(Icons.tag, color: Colors.grey, size: 22),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'กรุณากรอกเบอร์โทรศัพท์';
+                    }
+                    if (value.length < 9) {
+                      return 'เบอร์โทรศัพท์ต้องมีอย่างน้อย 9 หลัก';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 // Password
@@ -136,7 +163,11 @@ class _SignupUiState extends State<SignupUi> {
                 SizedBox(height: 25),
                 // Signup Button
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // ผ่าน validation ทั้งหมด
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(MediaQuery.of(context).size.width, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -194,6 +225,7 @@ class _SignupUiState extends State<SignupUi> {
                 ),
               ],
             ),
+          ),
           ),
         ),
       ),
