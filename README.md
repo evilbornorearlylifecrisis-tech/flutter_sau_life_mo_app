@@ -1,17 +1,39 @@
-# flutter_sau_life_mo_app
+#  Flutter SAU Life App
 
-A new Flutter project.
+## 📋 Overview
 
-## Getting Started
+| **Feature**          | **Description**                              | **Status**       |
+|----------------------|----------------------------------------------|------------------|
+| **Home Screen**      | Main interface with branding and navigation | ✅ Completed     |
+| **Login**            | Secure authentication for users             | ✅ Completed     |
+| **Signup**           | Registration for new users                  | ✅ Completed     |
+| **Google Sign-In**   | Alternative login via Google                | 🛠️ In Progress   |
+| **IoT Integration**  | Connect with campus IoT devices             | 📅 Planned       |
 
-This project is a starting point for a Flutter application.
+## 🖼️ Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+| **Home**                                                                 | **Login**                                                                | **Signup**                                                               |
+|--------------------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| ![Home](https://github.com/user-attachments/assets/fddf3b44-0e14-4f6e-8f41-f0ff49a7fc0d) | ![Login](https://github.com/user-attachments/assets/40d63c9f-f105-4950-a000-679321f65f9c) | ![Signup](https://github.com/user-attachments/assets/7b6fc80d-363d-4514-b7dc-255482a97a42) |
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🛠️ Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| **Technology**       | **Purpose**                       |
+|----------------------|-----------------------------------|
+| **Flutter**          | Cross-platform UI framework      |
+| **Dart**             | Programming language for Flutter |
+| **Google Fonts**     | Custom typography (Kanit)        |
+
+
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+## 📝 Credits
+
+- Created by **NAMO SAU**
+- Special thanks to มหาวิทยาลัยเอเชียอาคเนย์
+
+--- 
+*Build IoT-SAU Apps with passion!*
