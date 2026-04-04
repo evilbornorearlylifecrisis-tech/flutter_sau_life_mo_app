@@ -43,4 +43,3 @@ https://github.com/user-attachments/assets/2100638a-beab-4d8e-abc6-241835aac940
 ## เครดิต
 
 - พัฒนาโดย **NAMO SAU**
-- ขอขอบคุณเป็นพิเศษ: **มหาวิทยาลัยเอเชียอาคเนย์**
