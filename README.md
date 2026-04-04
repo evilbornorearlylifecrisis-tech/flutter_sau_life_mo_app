@@ -26,8 +26,6 @@
 
 ## Demo Video
 
-> คลิกเพื่อดูวิดีโอเดโม (8 วินาที)
-
 https://github.com/user-attachments/assets/2100638a-beab-4d8e-abc6-241835aac940
 
 ---
